@@ -1,35 +1,41 @@
+import {Provider, connect} from 'react-redux';
 import TodoList from '../components/todo-list'
-import {connect} from  'react-redux'
 
 function select(state) {
     if (state.filterName === 'All') {
-        return state.todos
+        return state.todoItem;
     }
     if (state.filterName === 'Active') {
-        return state.todos.filter((element)=>!element.isDone)
+        return state.todoItem.filter((todo)=>!todo.isDone)
     }
     if (state.filterName === 'Complete') {
-        return state.todos.filter((element)=>element.isDone)
+        return state.todoItem.filter((todo)=>todo.isDone)
     }
-
-    return state.todos;
+    return state.todoItem;
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state)=> {
 
     return {
-        todos: select(state)
+        todoItems: select(state)
     }
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch)=> {
     return {
-        onDelete: (index)=> {
-            dispatch({type: 'Delete', index});
+        onRemove: (index)=> {
+            dispatch({
+                type: 'Delete',
+                index
+            })
         },
         onToggle: (index)=> {
-            dispatch({type: 'Toggle', index});
+            dispatch({
+                type: 'Toggle',
+                index
+            })
         }
-    };
-}
+    }
+};
+
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
