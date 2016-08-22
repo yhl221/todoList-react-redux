@@ -3,7 +3,6 @@ class AddTodo extends Component {
 
     add() {
         const text = this.refs.myText.value;
-        {console.log(text)}
         this.props.onAdd(text);
         this.refs.myText.value = '';
     }

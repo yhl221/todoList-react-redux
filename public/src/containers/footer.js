@@ -1,11 +1,6 @@
 import Footer from '../components/footer'
 import {connect} from  'react-redux'
 
-function mapStateToProps(state) {
-    return {
-
-    }
-}
 function mapDispatchToProps(dispatch){
     return {
         onsetName:(name)=>{
@@ -13,4 +8,4 @@ function mapDispatchToProps(dispatch){
         }
     };
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Footer)
+export default connect(()=>{return{}},mapDispatchToProps)(Footer)

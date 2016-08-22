@@ -23,7 +23,7 @@ export  default store=>next=>action=> {
                     next({type:'GETTODOS',todoItem:res.body})
                 });
             break;
-        case 'SetName':
+        case 'ButtonName':
             request.put('./setName')
                 .send({name:action.name})
                 .end((err,res)=>{
