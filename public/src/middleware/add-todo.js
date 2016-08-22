@@ -8,4 +8,6 @@ export default store=>next=>action=>{
                 next({type: 'GETTODOS', todoItem: res.body})
             });
     }
+    else
+        next(action);
 }

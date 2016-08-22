@@ -4,10 +4,11 @@ import App from "./components/app";
 import {Provider} from "react-redux";
 import {createStore,applyMiddleware} from 'redux'
 import reducer from "./reducers/reducer.js"
-import middleware from './middleware/middleware'
-import addTodo from './middleware/add-todo'
+import Footer from './middleware/footer'
+import AddTodo from './middleware/add-todo'
+import TodoList from './middleware/todo-list'
 
-const createStoreWithMiddleware = applyMiddleware(addTodo,middleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(AddTodo,TodoList,Footer)(createStore);
 const store=createStoreWithMiddleware(reducer);
 
 render(
